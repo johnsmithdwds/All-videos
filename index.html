@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    const links = [
+      "https://ridhi.pages.dev/",
+      "https://jannat-toha.pages.dev/",
+      "https://arohi-mim.pages.dev/",
+      "https://abiha-video.pages.dev/"
+    ];
+
+    // আগের index নাও localStorage থেকে, যদি না থাকে 0
+    let currentIndex = localStorage.getItem("linkIndex");
+    if (currentIndex === null) currentIndex = 0;
+    else currentIndex = parseInt(currentIndex);
+
+    // লিংক নির্বাচন
+    const redirectLink = links[currentIndex];
+
+    // index update করো পরের জন্য
+    currentIndex++;
+    if (currentIndex >= links.length) currentIndex = 0; // সব লিংক শেষ হলে আবার শুরু
+    localStorage.setItem("linkIndex", currentIndex);
+
+    // 1 সেকেন্ড পরে redirect
+    setTimeout(() => {
+      window.location.href = redirectLink;
+    }, 1000);
+  </script>
+</head>
+<body>
+  <h2>Redirecting you to the next link...</h2>
+</body>
+</html>
